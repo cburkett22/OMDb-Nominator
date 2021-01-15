@@ -4,6 +4,7 @@ import './App.css';
 import MovieList from './components/MovieList';
 import MovieListHeader from './components/MovieListHeader';
 import MovieSearch from './components/MovieSearch';
+import AddNominations from './components/AddNominations';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -35,6 +36,7 @@ const App = () => {
       <div className='row'>
         <MovieList
           movies={movies}
+          nominateComponent={AddNominations}
         />
       </div>
     </div>
