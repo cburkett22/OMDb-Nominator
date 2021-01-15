@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MovieList from './components/MovieList';
 import MovieListHeader from './components/MovieListHeader';
+import MovieSearch from './components/MovieSearch';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -23,8 +24,9 @@ const App = () => {
 
   return (
     <div className='container-fluid app'>
-      <div className='row'>
-        <MovieListHeader header='Movies'/>
+      <div className='row d-flex align-items-center mt-4 mb-4'>
+        <MovieListHeader header='OMDb Movie Nominator' />
+        <MovieSearch />
       </div>
       <div className='row'>
         <MovieList
