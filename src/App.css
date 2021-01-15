@@ -4,13 +4,40 @@ body {
 }
 
 .app > .row {
-    overflow-x: auto;
+	overflow-x: hidden;
+	overflow: scroll;
     flex-wrap: nowrap;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #00b7ff;
+	border-radius: 10px;
 }
 
 .image-container {
 	position: relative;
 	transition: transform 0.2s;
+}
+
+.image-container > img {
+	width: 175px;
+}
+
+.image-container > span {
+	position: absolute;
+	text-align: center;
+	color: black;
+	background-color: rgba(245, 245, 245, 0.692);
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
 }
 
 .image-container:hover {
