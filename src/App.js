@@ -8,6 +8,7 @@ import AddNominations from './components/AddNominations';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [nominations, setNominations] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
   const getMovieRequest = async (searchValue) => {
@@ -24,19 +25,35 @@ const App = () => {
     getMovieRequest(searchValue);
   }, [searchValue]);
 
+  const addSelectedMovie = (movie) => {
+    const newNominationList = [...nominations, movie];
+    setNominations(newNominationList);
+  };
+
   return (
     <div className='container-fluid app'>
       <div className='row d-flex align-items-center mt-4 mb-4'>
         <MovieListHeader header='OMDb Movie Nominator' />
         <MovieSearch
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
+          searchValue={ searchValue }
+          setSearchValue={ setSearchValue }
         />
       </div>
       <div className='row'>
         <MovieList
           movies={movies}
-          nominateComponent={AddNominations}
+          nominateComponent={ AddNominations }
+          handleNominateClick={ addSelectedMovie }
+        />
+      </div>
+      <div className='row d-flex align-items-center mt-4 mb-4'>
+        <MovieListHeader header='Nominations' />
+      </div>
+      <div className='row'>
+        <MovieList
+          movies={nominations}
+          nominateComponent={ AddNominations }
+          handleNominateClick={ addSelectedMovie }
         />
       </div>
     </div>
