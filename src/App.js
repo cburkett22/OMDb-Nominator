@@ -25,10 +25,26 @@ const App = () => {
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]);
+  
+  useEffect(() => {
+		const movieNominations = JSON.parse(
+			localStorage.getItem('movie-nominations')
+		);
+
+		if (movieNominations) {
+			setNominations(movieNominations);
+		}
+	}, []);
+
+	const saveToLocalStorage = (items) => {
+		localStorage.setItem('movie-nominations', JSON.stringify(items));
+	};
 
   const addSelectedMovie = (movie) => {
     const newNominationList = [...nominations, movie];
+
     setNominations(newNominationList);
+    saveToLocalStorage(newNominationList);
   };
 
   const removeSelectedMovie = (movie) => {
@@ -37,6 +53,7 @@ const App = () => {
     );
 
     setNominations(newNominationList);
+    saveToLocalStorage(newNominationList);
   };
 
   return (
