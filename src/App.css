@@ -19,6 +19,10 @@ body {
 	border-radius: 10px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+	background: #036c95d7;
+}
+
 .image-container {
 	position: relative;
 	transition: transform 0.2s;

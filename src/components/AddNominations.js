@@ -9,7 +9,7 @@ const AddNominations = () => {
                 width="16"
                 height="16"
                 fill="green"
-                class="bi bi-plus-circle"
+                className="bi bi-plus-circle"
                 viewBox="0 0 16 16"
             >
                 <path
