@@ -36,8 +36,8 @@ const App = () => {
 		}
 	}, []);
 
-	const saveToLocalStorage = (items) => {
-    localStorage.setItem('movie-nominations', JSON.stringify(items));
+	const saveToLocalStorage = (savedMovies) => {
+    localStorage.setItem('movie-nominations', JSON.stringify(savedMovies));
     
     if (nominations.length === 4) {
       alert("You have nominated 5 movies!!");
