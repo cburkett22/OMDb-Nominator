@@ -7,26 +7,30 @@ import MovieSearch from './components/MovieSearch';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  // const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 
-  const getMovieRequest = async () => {
-    const MOVIE_URL = 'http://www.omdbapi.com/?s=star wars&apikey=ab616056';
+  const getMovieRequest = async (searchValue) => {
+    const MOVIE_URL = `http://www.omdbapi.com/?s=${searchValue}&apikey=ab616056`;
     const response = await fetch(MOVIE_URL);
     const responseJSON = await response.json();
 
-    setMovies(responseJSON.Search);
-    console.log(responseJSON);
+    if (responseJSON.Search) {
+      setMovies(responseJSON.Search);
+    }
   };
 
   useEffect(() => {
-    getMovieRequest();
-  }, []);
+    getMovieRequest(searchValue);
+  }, [searchValue]);
 
   return (
     <div className='container-fluid app'>
       <div className='row d-flex align-items-center mt-4 mb-4'>
         <MovieListHeader header='OMDb Movie Nominator' />
-        <MovieSearch />
+        <MovieSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
       </div>
       <div className='row'>
         <MovieList
